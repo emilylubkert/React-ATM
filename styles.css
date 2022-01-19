@@ -1,0 +1,15 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    padding: 10px;
+    background-color: #def2f1; 
+}
+select {
+  display: block;
+}
+
+table {
+    padding: 5px;
+    width: 100%;
+    background-color: #3aafa9;
+    color: white;
+}
