@@ -25,8 +25,7 @@ const TransactionsList = ({transactions}) => {
 }
   
   const Account = () => {
-  let deposit = 0;
-  //const [value, setValue] = React.useState('');
+  const [deposit, setDeposit] = React.useState(0);
   const [totalState, setTotalState] = React.useState(0);
   const [isDeposit, setIsDeposit] = React.useState(true);
   const [isValid, setIsValid] = React.useState(false);
@@ -36,7 +35,7 @@ const TransactionsList = ({transactions}) => {
   let status = `Account Balance  $${totalState}`;
   
   const handleChange = event => {
-    deposit = (Number(event.target.value));
+    setDeposit(Number(event.target.value));
     if (deposit <= 0){
         return setIsValid(false);
     }else if(!isDeposit && deposit > totalState) {
@@ -53,8 +52,8 @@ const TransactionsList = ({transactions}) => {
     setTotalState(newTotal);
     setIsValid(false);
     event.preventDefault();
-    //setValue(null);
     saveTransactions(newTotal);
+    setDeposit(0);
   };  
 
   const handleModeSelect = (event) => {
