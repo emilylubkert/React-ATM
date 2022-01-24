@@ -1,10 +1,10 @@
 
-const ATMDeposit = ({onChange, isDeposit, isValid}) => {
+const ATMDeposit = ({onChange, isDeposit, isValid, deposit}) => {
     const choice = ["Deposit", "Cash Back"];
     return (
       <label className="label huge">
         <h3>{choice[Number(!isDeposit)]}</h3>
-        <input type="number" onChange={onChange}></input>
+        <input type="number" value={deposit} onChange={onChange}></input>
         <input type="submit" value="Submit" disabled={!isValid}></input>
       </label>
     );
@@ -25,7 +25,7 @@ const TransactionsList = ({transactions}) => {
 }
   
   const Account = () => {
-  const [deposit, setDeposit] = React.useState(0);
+  const [deposit, setDeposit] = React.useState('');
   const [totalState, setTotalState] = React.useState(0);
   const [isDeposit, setIsDeposit] = React.useState(true);
   const [isValid, setIsValid] = React.useState(false);
@@ -53,7 +53,7 @@ const TransactionsList = ({transactions}) => {
     setIsValid(false);
     event.preventDefault();
     saveTransactions(newTotal);
-    setDeposit(0);
+    setDeposit('');
   };  
 
   const handleModeSelect = (event) => {
@@ -85,7 +85,7 @@ const TransactionsList = ({transactions}) => {
             <option id="cashback-selection" value="Cash Back">Cash Back</option>
         </select>
         {
-        (mode != "") && <ATMDeposit onChange={handleChange} isDeposit={isDeposit} isValid={isValid}> Deposit</ATMDeposit>
+        (mode != "") && <ATMDeposit onChange={handleChange} isDeposit={isDeposit} isValid={isValid} deposit={deposit}> Deposit</ATMDeposit>
         }
       </form>
       <table>
